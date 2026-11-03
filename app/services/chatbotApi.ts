@@ -200,6 +200,8 @@ export const chatbotApi = createApi({
         }
       }
 
+      headers.set("ngrok-skip-browser-warning", "true");
+
       return headers;
     },
   }),

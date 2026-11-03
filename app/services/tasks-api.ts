@@ -561,6 +561,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: API_BASE_URL,
+  
   prepareHeaders: (headers) => {
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("userToken");
@@ -569,6 +570,7 @@ const baseQuery = fetchBaseQuery({
       }
     }
 
+    headers.set("ngrok-skip-browser-warning", "true");
     // fetchBaseQuery sets JSON content type for JSON bodies as needed.
     // Do not set Content-Type manually for FormData uploads.
     return headers;
