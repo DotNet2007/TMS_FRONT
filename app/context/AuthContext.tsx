@@ -148,6 +148,8 @@ export function AuthProvider({
           {
             headers: {
               Authorization: `Bearer ${token}`,
+              "ngrok-skip-browser-warning": "true",
+
             },
           }
         );
