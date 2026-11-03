@@ -150,7 +150,7 @@ export default function LoginPage() {
 
     try {
       const apiUrl = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000/api").replace(/\/$/, "");
-      const loginEndpoint = process.env.NEXT_PUBLIC_AUTH_LOGIN_ENDPOINT ?? "/api/auth/login";
+      const loginEndpoint = process.env.NEXT_PUBLIC_AUTH_LOGIN_ENDPOINT ?? "/auth/login";
 
       const response = await axios.post<{
         accessToken: string;
