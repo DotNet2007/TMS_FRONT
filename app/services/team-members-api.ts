@@ -364,7 +364,7 @@ export const teamMembersApi = createApi({
     },
   }),
 
-  tagTypes: ["TeamMembers", "Users", "Teams", "Memberships", "JobTitles", "Roles"],
+  tagTypes: ["TeamMembers", "Users", "Teams", "Memberships", "JobTitles", "Roles", "TasksDashboard"],
 
   endpoints: (builder) => ({
     // ==================== EXISTING USERS ====================
