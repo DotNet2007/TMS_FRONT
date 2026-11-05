@@ -77,7 +77,7 @@ function displayDate(
 type Task = {
   id: string;
   title: string;
-  description?: string | null;
+  // description?: string | null;
   project: string;
   assigneeName: string;
   checked: boolean;
@@ -449,11 +449,11 @@ export default function MyTasksPage() {
           >
             {task.title}
           </strong>
-          {task.description && (
+          {/* {task.description && (
             <p className={`mt-1 line-clamp-2 text-xs ${mutedText}`}>
               {task.description}
             </p>
-          )}
+          )} */}
           <div className="mt-2 flex items-center gap-2 md:hidden">
             <CalendarDays size={13} />
             <span className={`text-[11px] ${mutedText}`}>{displayDate(task.date, language)}</span>
@@ -866,7 +866,7 @@ export default function MyTasksPage() {
 
         <div>
           {isLoading ? (
-            <LoadingPage lang={language} message={t.loadingTasks} />
+            <LoadingPage lang={language} message={t.loadingTasks} isDark={isDark} />
           ) : isError ? (
             <div className="flex min-h-40 flex-col items-center justify-center gap-3 px-5 py-10 text-center">
               <p className={`text-sm ${mutedText}`}>{t.failedLoad}</p>
