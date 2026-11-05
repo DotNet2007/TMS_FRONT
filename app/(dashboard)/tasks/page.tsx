@@ -30,6 +30,7 @@ import {
 
 import DynamicReportTable, { TableColumn } from "@/app/components/DynamicTable";
 import LoadingPage from "./loading";
+import { useDebounce } from "@/app/hooks/useDebounce";
 
 type Language = "ar" | "en";
 
@@ -93,6 +94,7 @@ export default function MyTasksPage() {
   const language: Language = isRTL ? "ar" : "en";
 
   const [query, setQuery] = useState("");
+  const debouncedQuery = useDebounce(query, 500);
   const [status, setStatus] = useState<"all" | "progress" | "completed" | "needsReview" | "rework">("all");
   const [reviewTaskId, setReviewTaskId] = useState<string | null>(null);
   const [reviewFeedback, setReviewFeedback] = useState("");
@@ -141,7 +143,7 @@ export default function MyTasksPage() {
   const requestArgs = {
     page: currentPage,
     limit: pageSize,
-    search: query.trim() || undefined,
+    search: debouncedQuery.trim() || undefined,
     status: apiStatusFilter[status],
   };
 
@@ -597,7 +599,7 @@ export default function MyTasksPage() {
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0">
-          <span className="mb-2 inline-flex items-center gap-2 text-xs font-semibold text-[#238e94] sm:text-sm">
+          <span className="mb-2 inline-flex items-center gap-2 text-xs font-semibold text-teal-500 sm:text-sm">
             <Check size={14} />
             {t.kicker}
           </span>
